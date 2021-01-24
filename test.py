@@ -40,3 +40,14 @@ logging.pprint(f"Hello, this is very verbose"  , 12)
 
 
 logging.pprint(f"Clamp me AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"  , 12)
+
+
+def test_function():
+    logging.pprint(f"Hello, this is a failure", 0)
+    logging.pprint(f"Hello, this is a success", 1)
+    logging.pprint(f"Hello, this is a warning", 2)
+    logging.pprint(f"Hello, this is an info"  , 3)
+    logging.pprint(f"Hello, this is verbose"  , 4)
+    logging.pprint(f"Hello, this is very verbose"  , 12)
+
+test_function()
