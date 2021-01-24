@@ -36,7 +36,7 @@ def _pprint(message, level=LOGGING_FAIL):
         frame_info=""
 
     if(len(message)>CLAMP):
-        message = message[0:CLAMP-6] + "..."
+        message = message[0:CLAMP-3] + "..."
     elif(VERBOSITY>=SHOW_STACK_THRESHOLD):
         message += PADDING_COLOR + PADDING_CHAR * (CLAMP-len(message)) + "\033[0m"
     
