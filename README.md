@@ -5,6 +5,10 @@ A very simple logging package
 
 ![](https://i.imgur.com/MynkRmY.png)
 
+## Installing
+
+`pip install allogate`
+
 ## Usage example
 ```python
 import allogate as logging
