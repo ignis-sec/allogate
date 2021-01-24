@@ -21,6 +21,9 @@ PADDING_CHAR="_"
 PADDING_COLOR = "\033[90m"
 STACK_COLOR = " \033[93m" 
 
+def verbosity(v):
+    VERBOSITY=v
+
 def pprint(message,level=LOGGING_FAIL):
     if(VERBOSITY>=level):
         _pprint(message,level)
