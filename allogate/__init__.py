@@ -34,11 +34,16 @@ def _pprint(message, level=LOGGING_FAIL):
         frame_info =  STACK_COLOR + "[" + frame.filename.split('\\')[-1].split('.')[0] + ":" + frame.function + "]\033[0m"
     else:
         frame_info=""
-
-    if(len(message)>CLAMP):
-        message = message[0:CLAMP-3] + "..."
+    
+    # 3 * number_of_tabs
+    adjust_for_tab = len([i for i,s in enumerate(message[0:CLAMP]) if s=='\t'])*3
+    
+    actual_length = len(message) + adjust_for_tab
+    
+    if(actual_length>CLAMP):
+        message = message[0:CLAMP-3-adjust_for_tab] + "..."
     elif(VERBOSITY>=SHOW_STACK_THRESHOLD):
-        message += PADDING_COLOR + PADDING_CHAR * (CLAMP-len(message)) + "\033[0m"
+        message += PADDING_COLOR + PADDING_CHAR * (CLAMP-actual_length) + "\033[0m"
     
     
     if(level==LOGGING_FAIL):
