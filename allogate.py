@@ -16,21 +16,26 @@ LOGGING_ALL =4
 VERBOSITY=0
 CLAMP=100
 
+SHOW_STACK_THRESHOLD=2
+PADDING_CHAR="_"
+PADDING_COLOR = "\033[90m"
+STACK_COLOR = " \033[93m" 
+
 def pprint(message,level=LOGGING_FAIL):
     if(VERBOSITY>=level):
         _pprint(message,level)
 
 def _pprint(message, level=LOGGING_FAIL):
-    if(VERBOSITY>=2):
+    if(VERBOSITY>=SHOW_STACK_THRESHOLD):
         frame = inspect.stack()[2]
-        frame_info = " \033[93m[" + frame.filename.split('\\')[-1].split('.')[0] + ":" + frame.function + "]\033[0m"
+        frame_info =  STACK_COLOR + "[" + frame.filename.split('\\')[-1].split('.')[0] + ":" + frame.function + "]\033[0m"
     else:
         frame_info=""
 
     if(len(message)>CLAMP):
         message = message[0:CLAMP-6] + "..."
-    elif(VERBOSITY>=2):
-        message += "\033[90m" + "_" * (CLAMP-len(message)) + "\033[0m"
+    elif(VERBOSITY>=SHOW_STACK_THRESHOLD):
+        message += PADDING_COLOR + PADDING_CHAR * (CLAMP-len(message)) + "\033[0m"
     
     
     if(level==LOGGING_FAIL):
